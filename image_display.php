@@ -20,9 +20,9 @@ if($actionName == "imageDisplay"){
       while($row = mysqli_fetch_assoc($result)){
         $postData[] = $row;
       }
-      $resultData = array('status' => true, 'postData' => $postData);
+      $resultData = array('status' => 'true', 'postData' => $postData);
     }else{
-      $resultData = array('status' => false, 'message' => 'No Post(s) Found...');
+      $resultData = array('status' => 'false', 'message' => 'No Post(s) Found...');
     }
  
     echo json_encode($resultData);

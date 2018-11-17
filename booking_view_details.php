@@ -4,10 +4,10 @@
 
  // $actionName = $_POST["actionName"];
 
- // if($actionName == "pickUp"){
+ // if($actionName == "dropUp"){
 	
 	$token = bin2hex(random_bytes(16));
-	$query = "SELECT lat,lng,pickup_address,pickup_pincode,floor,BHK_Status,date  FROM booking ORDER BY id ASC";
+	$query = "SELECT name,rating,pickup_address,date,drop_location_address  FROM booking ORDER BY id ASC";
 	$result = mysqli_query($conn, $query);
  
 	$rowCount = mysqli_num_rows($result);

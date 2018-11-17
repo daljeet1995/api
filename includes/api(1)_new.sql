@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 14, 2018 at 01:06 PM
+-- Generation Time: Nov 17, 2018 at 12:05 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -33,17 +33,17 @@ CREATE TABLE `admin` (
   `full_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `mobile` varchar(15) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `token` varchar(150) NOT NULL
+  `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `full_name`, `email`, `mobile`, `password`, `token`) VALUES
-(1, 'daljeet', 'daljeet@technokriti.in', '123456789', 'ZGFsamVldEAxMjM=', ''),
-(2, 'daljeet', 'ds025272@gmail.com', '123456789', 'ZGVsaGlAMTIz', '');
+INSERT INTO `admin` (`id`, `full_name`, `email`, `mobile`, `password`) VALUES
+(1, 'daljeet', 'daljeet@technokriti.in', '9876543212', 'ZGFsamVldEAxMjM='),
+(2, 'daljeet', 'ds025272@gmail.com', '9876543212', 'MTIzNDU2'),
+(3, 'daljeet', 'daljeet@technokriti.in', '9876543212', 'ZGFsamVldA==');
 
 -- --------------------------------------------------------
 
@@ -56,21 +56,28 @@ CREATE TABLE `booking` (
   `lat` double NOT NULL,
   `lng` double NOT NULL,
   `location` text NOT NULL,
-  `pincode` text NOT NULL,
+  `pickup_pincode` text NOT NULL,
+  `parking_facility` enum('0','1') DEFAULT '0',
+  `BHK_Status` varchar(100) NOT NULL,
   `floor` int(10) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `pickup_address` text NOT NULL,
   `drop_location_address` text NOT NULL,
   `drop_pincode` text NOT NULL,
-  `drop_floor` int(10) NOT NULL
+  `drop_floor` int(10) NOT NULL,
+  `drop_parking` enum('0','1') NOT NULL DEFAULT '0',
+  `name` varchar(255) NOT NULL,
+  `rating` int(10) NOT NULL,
+  `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `lat`, `lng`, `location`, `pincode`, `floor`, `date`, `pickup_address`, `drop_location_address`, `drop_pincode`, `drop_floor`) VALUES
-(1, 28.7041, 77.1025, 'East Delhi', '110051', 2, '2018-11-14 11:34:39', 'south delhi', 'west delhi', '110092', 2);
+INSERT INTO `booking` (`id`, `lat`, `lng`, `location`, `pickup_pincode`, `parking_facility`, `BHK_Status`, `floor`, `date`, `pickup_address`, `drop_location_address`, `drop_pincode`, `drop_floor`, `drop_parking`, `name`, `rating`, `description`) VALUES
+(1, 28.7041, 77.1025, 'East Delhi', '110053', '1', '2 BHK', 2, '2018-11-15 09:58:20', 'south delhi', 'west delhi', '110092', 2, '0', 'Karan Kapoor', 4, 'Lorem Ipsum is simply dummy text of the printing'),
+(46, 28.6433, 77.3382, '', '', '0', '', 0, '2018-11-15 12:40:05', '', '', '', 0, '0', '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -111,8 +118,7 @@ CREATE TABLE `deal_img` (
 --
 
 INSERT INTO `deal_img` (`id`, `image`) VALUES
-(1, 'images/one.jpg'),
-(2, 'images/two.jpeg');
+(1, 'images/one.jpg');
 
 -- --------------------------------------------------------
 
@@ -178,13 +184,13 @@ ALTER TABLE `my_booking`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `deal`
@@ -196,7 +202,7 @@ ALTER TABLE `deal`
 -- AUTO_INCREMENT for table `deal_img`
 --
 ALTER TABLE `deal_img`
-  MODIFY `id` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `my_booking`

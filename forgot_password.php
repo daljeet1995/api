@@ -57,7 +57,7 @@ $mail = new PHPMailer();
   }
   else
   {
-   $resultData = array('STATUS' => 'True', 'MESSAGE' => 'Message has been sent successfully');
+   $resultData = array('STATUS' => "True", 'MESSAGE' => 'Message has been sent successfully');
   }
 }
  echo json_encode($resultData);
